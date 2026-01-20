@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cat Dog Classifier</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h2>🐱🐶 Cat vs Dog Classifier</h2>
+
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="image" required>
+
+        <select name="model">
+            <option value="svm">SVM</option>
+            <option value="rf">Random Forest</option>
+            <option value="lr">Logistic Regression</option>
+        </select>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if image_path %}
+        <img src="{{ image_path }}" alt="Uploaded Image">
+    {% endif %}
+
+    {% if result %}
+        <div class="result">Prediction: {{ result }}</div>
+    {% endif %}
+</div>
+
+</body>
+</html>
